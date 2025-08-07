@@ -22,6 +22,11 @@ const ComicCard = ({ comic }: ComicCardProps) => {
     <div className="card-product group animate-slide-up-fade">
       {/* Imagem */}
       <div className="relative overflow-hidden rounded-xl mb-4">
+        {/* <img
+          src={comic.image}
+          alt={comic.title}
+          className="w-full h-auto rounded"
+        /> */}
         <img
           src={comic.image}
           alt={comic.title}

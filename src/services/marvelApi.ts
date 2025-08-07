@@ -2,6 +2,7 @@
 import { MarvelApiResponse, Comic } from '@/types/comic';
 
 const MARVEL_PUBLIC_KEY = '79f8be1bd813e82ddc276c7638bbe80e';
+// Privada: 98dc10f04fc113de039750a4cf2c2bb638b6570e
 const MARVEL_BASE_URL = 'https://gateway.marvel.com/v1/public';
 
 // Função para gerar hash MD5 usando uma biblioteca simples
@@ -67,7 +68,7 @@ export const fetchMarvelComics = async (limit: number = 20, offset: number = 0):
         description: marvelComic.description || 'Descrição não disponível para esta HQ.',
         price: Math.round(price * 5.5 * 100) / 100,
         image: marvelComic.thumbnail 
-          ? `${marvelComic.thumbnail.path}.${marvelComic.thumbnail.extension}`
+          ? `${marvelComic.thumbnail.path}/portrait_incredible.${marvelComic.thumbnail.extension}`
           : 'https://images.unsplash.com/photo-1608889175250-c3b0c1667d2c?w=400&h=600&fit=crop',
         pages: marvelComic.pageCount || Math.floor(Math.random() * 30) + 20,
         category: marvelComic.series?.name || 'Marvel Comics',

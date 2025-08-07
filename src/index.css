@@ -1,0 +1,226 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importando fontes do Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap');
+
+/* Design System - Marvel Comics Store */
+@layer base {
+  :root {
+    /* Cores Principais */
+    --background: 250 250 250;
+    --foreground: 10 10 10;
+    
+    /* Marvel Brand Colors */
+    --marvel-red: 2 85% 55%;
+    --marvel-red-dark: 2 85% 45%;
+    --marvel-red-light: 2 85% 65%;
+    --marvel-black: 0 0% 4%;
+    --marvel-gray: 220 9% 46%;
+    --marvel-gray-light: 220 14% 96%;
+    
+    /* Sistema de Cores Semânticas */
+    --primary: var(--marvel-red);
+    --primary-dark: var(--marvel-red-dark);
+    --primary-light: var(--marvel-red-light);
+    --secondary: var(--marvel-black);
+    --accent: 220 9% 46%;
+    --accent-light: 220 14% 96%;
+    
+    /* Cards e Superfícies */
+    --card: 0 0% 100%;
+    --card-foreground: var(--foreground);
+    --card-border: 220 13% 91%;
+    
+    /* Estados Interativos */
+    --hover: 220 14% 96%;
+    --active: var(--primary);
+    
+    /* Sombras e Elevação */
+    --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-hero: 0 25px 50px -12px rgb(226 54 54 / 0.25);
+    
+    --radius: 12px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-accent-light;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  /* Botões do Sistema */
+  .btn-hero {
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-3 rounded-xl;
+    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-hero;
+    @apply focus:outline-none focus:ring-4 focus:ring-primary/20;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-white font-medium px-6 py-2.5 rounded-lg;
+    @apply transition-all duration-200 hover:shadow-medium;
+    @apply focus:outline-none focus:ring-2 focus:ring-secondary/20;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+    @apply font-medium px-6 py-2.5 rounded-lg transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20;
+  }
+  
+  .btn-ghost {
+    @apply text-accent hover:text-primary hover:bg-hover;
+    @apply font-medium px-4 py-2 rounded-lg transition-all duration-200;
+  }
+  
+  /* Cards do Sistema */
+  .card-product {
+    @apply bg-card border border-card-border rounded-2xl p-6;
+    @apply transition-all duration-300 hover:shadow-large hover:border-primary/20;
+    @apply transform hover:-translate-y-1;
+  }
+  
+  .card-hero {
+    @apply bg-gradient-to-br from-card to-accent-light/30;
+    @apply border border-card-border rounded-3xl p-8;
+    @apply shadow-large backdrop-blur-sm;
+  }
+  
+  /* Tipografia Heroica */
+  .text-hero {
+    @apply font-orbitron font-black text-4xl md:text-6xl lg:text-7xl;
+    @apply bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent;
+    @apply leading-tight tracking-tight;
+  }
+  
+  .text-title {
+    @apply font-orbitron font-bold text-2xl md:text-3xl text-secondary;
+    @apply leading-tight;
+  }
+  
+  .text-subtitle {
+    @apply font-inter font-semibold text-lg text-accent;
+    @apply leading-relaxed;
+  }
+  
+  .text-body {
+    @apply font-inter font-normal text-base text-foreground;
+    @apply leading-relaxed;
+  }
+  
+  .text-caption {
+    @apply font-inter font-medium text-sm text-accent;
+  }
+  
+  /* Layouts e Containers */
+  .container-hero {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .grid-products {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  
+  /* Estados de Loading */
+  .loading-shimmer {
+    @apply animate-pulse bg-gradient-to-r from-accent-light via-hover to-accent-light;
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Animações Customizadas */
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsividade Avançada */
+@media (max-width: 640px) {
+  .text-hero {
+    @apply text-3xl;
+  }
+  
+  .grid-products {
+    @apply grid-cols-1;
+  }
+  
+  .container-hero {
+    @apply px-4;
+  }
+}

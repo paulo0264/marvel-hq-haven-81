@@ -119,9 +119,9 @@ const Index = () => {
           <h2 className="text-title mb-4">Explore Nosso Catálogo</h2>
           <p className="text-accent max-w-2xl mx-auto">
             HQs direto da Marvel! Incluindo edições raras e exclusivas.
-            {error && (
+            {/* {error && (
               <span className="block text-yellow-600 mt-2 text-sm">⚠️ {error}</span>
-            )}
+            )} */}
           </p>
         </div>
 
